@@ -10,3 +10,6 @@ print(df.info())
 #replacing blank values with 0 because tenure is 0 so there are not records
 df["TotalCharges"] = df["TotalCharges"].replace(" ", "0")
 df["TotalCharges"] = df["TotalCharges"].astype("float")
+
+#There is no null values in table
+print(df.isnull().sum().sum())

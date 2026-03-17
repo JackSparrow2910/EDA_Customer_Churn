@@ -33,6 +33,14 @@ def conv(value):
 df['SeniorCitizen']=df['SeniorCitizen'].apply(conv)
 print(df.head())
 
-ax=sns.countplot(x='Churn', data=df)
-ax.bar_label(ax.containers[0])
+
+# ax=sns.countplot(x='Churn', data=df)
+# ax.bar_label(ax.containers[0])
+# plt.title('Count of customers by Churn')
+
+
+
+gb = df.groupby('Churn').agg({'Churn':'count'})
+plt.pie(gb['Churn'], labels=gb.index, autopct='%1.2f%%')
+plt.title('Percentage of churned customers', fontsize=20)
 plt.show()

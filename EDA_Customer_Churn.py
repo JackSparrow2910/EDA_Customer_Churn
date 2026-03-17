@@ -33,4 +33,6 @@ def conv(value):
 df['SeniorCitizen']=df['SeniorCitizen'].apply(conv)
 print(df.head())
 
-# sns.countplot(df['Churn'])
+ax=sns.countplot(x='Churn', data=df)
+ax.bar_label(ax.containers[0])
+plt.show()

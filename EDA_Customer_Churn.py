@@ -24,4 +24,13 @@ print(df.describe())
 print()
 
 #There are no duplicates in whole table
-print(f"Count duplicates of whole table: {df.duplicated().sum()}")
+print(f"Count duplicates of whole table: {df.duplicated().sum()}\n")
+
+def conv(value):
+    return 'Yes' if value==1 else 'No'
+
+#convert bool values 0/1 to Yes/No to make it easier to understand
+df['SeniorCitizen']=df['SeniorCitizen'].apply(conv)
+print(df.head())
+
+# sns.countplot(df['Churn'])

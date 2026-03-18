@@ -44,8 +44,31 @@ print(df.head())
 #plt.pie(gb['Churn'], labels=gb.index, autopct='%1.2f%%')
 #plt.title('Percentage of churned customers', fontsize=20)
 
-plt.figure(figsize=(4,4))
-plt.title("Churn by Genders")
-ax=sns.countplot(x='gender', data=df, hue='Churn')
-ax.bar_label(ax.containers[0])
+# plt.figure(figsize=(4,4))
+# plt.title("Churn by Genders")
+# ax=sns.countplot(x='gender', data=df, hue='Churn')
+# ax.bar_label(ax.containers[0])
+
+# plt.figure(figsize=(4,4))
+# plt.title("Churn by Senior Citizen")
+# ax=sns.countplot(x='SeniorCitizen', data=df, hue='Churn')
+# ax.bar_label(ax.containers[0])
+# plt.show()
+
+total_counts = df.groupby('SeniorCitizen')['Churn'].value_counts(normalize=True).unstack()*100
+
+fig, ax = plt.subplots(figsize=(6,6))
+
+total_counts.plot(kind='bar', stacked=True, ax=ax, color=['#1f77b4', '#ff7f0e'])
+
+for p in ax.patches:
+    width, height = p.get_width(), p.get_height()
+    x,y = p.get_xy()
+    ax.text(x + width/2,y + height/2,f'{height:.1f}%', ha='center',va='center')
+
+plt.title("Churn by Senior Citizen (Stacked Bar Chart)")
+plt.xlabel("SeniorCitizen")
+plt.ylabel("Churn (%)")
+plt.xticks(rotation=0)
+plt.legend(title='Churn', loc='upper right')
 plt.show()

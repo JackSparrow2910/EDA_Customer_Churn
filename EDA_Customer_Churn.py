@@ -40,7 +40,12 @@ print(df.head())
 
 
 
-gb = df.groupby('Churn').agg({'Churn':'count'})
-plt.pie(gb['Churn'], labels=gb.index, autopct='%1.2f%%')
-plt.title('Percentage of churned customers', fontsize=20)
+#gb = df.groupby('Churn').agg({'Churn':'count'})
+#plt.pie(gb['Churn'], labels=gb.index, autopct='%1.2f%%')
+#plt.title('Percentage of churned customers', fontsize=20)
+
+plt.figure(figsize=(4,4))
+plt.title("Churn by Genders")
+ax=sns.countplot(x='gender', data=df, hue='Churn')
+ax.bar_label(ax.containers[0])
 plt.show()

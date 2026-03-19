@@ -74,8 +74,35 @@ print(df.head())
 
 # sns.histplot(x='tenure', data=df, bins=72, hue='Churn')
 
-plt.figure(figsize=(4,4))
-plt.title("Churn by Contracts")
-ax=sns.countplot(x='Contract', data=df, hue='Churn')
-ax.bar_label(ax.containers[0])
+# plt.figure(figsize=(4,4))
+# plt.title("Churn by Contracts")
+# ax=sns.countplot(x='Contract', data=df, hue='Churn')
+# ax.bar_label(ax.containers[0])
+
+columns = ['PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity',
+           'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies']
+
+# Number of columns for the subplot grid (you can change this)
+n_cols = 3
+n_rows = (len(columns) + n_cols - 1) // n_cols  # Calculate number of rows needed
+
+# Create subplots
+fig, axes = plt.subplots(n_rows, n_cols, figsize=(15, n_rows * 4))  # Adjust figsize as needed
+
+# Flatten the axes array for easy iteration (handles both 1D and 2D arrays)
+axes = axes.flatten()
+
+# Iterate over columns and plot count plots
+for i, col in enumerate(columns):
+    sns.countplot(x=col, data=df, ax=axes[i], hue = df["Churn"])
+    axes[i].set_title(f'Count Plot of {col}')
+    axes[i].set_xlabel(col)
+    axes[i].set_ylabel('Count')
+
+# Remove empty subplots (if any)
+for j in range(i + 1, len(axes)):
+    fig.delaxes(axes[j])
+
+plt.tight_layout()
 plt.show()
+

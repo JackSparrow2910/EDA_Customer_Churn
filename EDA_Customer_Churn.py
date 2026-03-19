@@ -72,5 +72,10 @@ print(df.head())
 # plt.xticks(rotation=0)
 # plt.legend(title='Churn', loc='upper right', bbox_to_anchor=(1.05, 1))
 
-sns.histplot(x='tenure', data=df, bins=72, hue='Churn')
+# sns.histplot(x='tenure', data=df, bins=72, hue='Churn')
+
+plt.figure(figsize=(4,4))
+plt.title("Churn by Contracts")
+ax=sns.countplot(x='Contract', data=df, hue='Churn')
+ax.bar_label(ax.containers[0])
 plt.show()

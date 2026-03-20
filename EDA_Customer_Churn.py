@@ -38,13 +38,14 @@ print(df.head())
 # ax=sns.countplot(x='Churn', data=df)
 # ax.bar_label(ax.containers[0])
 # plt.title('Count of customers by Churn')
-
+# plt.savefig('Customer_Churn.png')
 
 
 ##Percentage of churned customers
-#gb = df.groupby('Churn').agg({'Churn':'count'})
-#plt.pie(gb['Churn'], labels=gb.index, autopct='%1.2f%%')
-#plt.title('Percentage of churned customers', fontsize=20)
+# gb = df.groupby('Churn').agg({'Churn':'count'})
+# plt.pie(gb['Churn'], labels=gb.index, autopct='%1.2f%%')
+# plt.title('Percentage of churned customers', fontsize=20)
+# plt.savefig('Percentage of churned customers.png')
 ###from the given pie chart we can conclude that 26.54% of our customers have churned out.
 
 ##Countplot of churned customers by gender
@@ -52,6 +53,7 @@ print(df.head())
 # plt.title("Churn by Genders")
 # ax=sns.countplot(x='gender', data=df, hue='Churn')
 # ax.bar_label(ax.containers[0])
+# plt.savefig('Churn_Genders.png')
 
 
 ##Countplot of SeniorCitizen
@@ -59,7 +61,8 @@ print(df.head())
 # plt.title("Churn by Senior Citizen")
 # ax=sns.countplot(x='SeniorCitizen', data=df, hue='Churn')
 # ax.bar_label(ax.containers[0])
-# plt.show()
+# plt.savefig('Churn_Senior_Citizen.png')
+
 
 
 ##Stacked Bar Chart of churned SeniorCitizen customers
@@ -73,17 +76,19 @@ print(df.head())
 #     width, height = p.get_width(), p.get_height()
 #     x,y = p.get_xy()
 #     ax.text(x + width/2,y + height/2,f'{height:.1f}%', ha='center',va='center')
-
+#
 # plt.title("Churn by Senior Citizen (Stacked Bar Chart)")
 # plt.xlabel("SeniorCitizen")
 # plt.ylabel("Churn (%)")
 # plt.xticks(rotation=0)
 # plt.legend(title='Churn', loc='upper right', bbox_to_anchor=(1.05, 1))
+# plt.savefig('SeniorCitizenChurn_StackedBar.png')
 ###comparative a greater pecentage of people in senior citizen category have churned
 
 
 ##Histogram of churned customers by tenure
 # sns.histplot(x='tenure', data=df, bins=72, hue='Churn')
+# plt.savefig('Churn_by_Tenure.png')
 ### people who have used our services for a long time have stayed and people who have used our sevices
 ### 1 or 2 months have churned
 
@@ -93,6 +98,7 @@ print(df.head())
 # plt.title("Churn by Contracts")
 # ax=sns.countplot(x='Contract', data=df, hue='Churn')
 # ax.bar_label(ax.containers[0])
+# plt.savefig('Churn_by_Contract.png')
 ###people who have month to month contract are likely to churn then from those who have 1 or 2 years or contract.
 
 
@@ -122,16 +128,18 @@ print(df.head())
 #     fig.delaxes(axes[j])
 #
 # plt.tight_layout()
+# plt.savefig('Churn_by_Services.png')
 ###The majority of customers who do not churn tend to have services like PhoneService, InternetService (particularly DSL), and OnlineSecurity enabled.
 ### For services like OnlineBackup, TechSupport, and StreamingTV, churn rates are noticeably higher when these services are not used or are unavailable.
 
 ##Countplot of churned customers by Payment Method
-plt.figure(figsize=(9,4))
-plt.title("Churned Customers by Payment Method")
-ax=sns.countplot(x='PaymentMethod', data=df, hue='Churn')
-ax.bar_label(ax.containers[0])
-ax.bar_label(ax.containers[1])
-plt.xticks(rotation=0)
+# plt.figure(figsize=(9,4))
+# plt.title("Churned Customers by Payment Method")
+# ax=sns.countplot(x='PaymentMethod', data=df, hue='Churn')
+# ax.bar_label(ax.containers[0])
+# ax.bar_label(ax.containers[1])
+# plt.xticks(rotation=0)
+# plt.savefig('Churn_by_PaymentMethod.png')
 ###customer is likely to churn when he is using electronic check as a payment method.
 
 

@@ -34,27 +34,34 @@ df['SeniorCitizen']=df['SeniorCitizen'].apply(conv)
 print(df.head())
 
 
+##Countplot of customers by Churn
 # ax=sns.countplot(x='Churn', data=df)
 # ax.bar_label(ax.containers[0])
 # plt.title('Count of customers by Churn')
 
 
 
+##Percentage of churned customers
 #gb = df.groupby('Churn').agg({'Churn':'count'})
 #plt.pie(gb['Churn'], labels=gb.index, autopct='%1.2f%%')
 #plt.title('Percentage of churned customers', fontsize=20)
 
+##Countplot of churned customers by gender
 # plt.figure(figsize=(4,4))
 # plt.title("Churn by Genders")
 # ax=sns.countplot(x='gender', data=df, hue='Churn')
 # ax.bar_label(ax.containers[0])
 
+
+##Countplot of SeniorCitizen
 # plt.figure(figsize=(4,4))
 # plt.title("Churn by Senior Citizen")
 # ax=sns.countplot(x='SeniorCitizen', data=df, hue='Churn')
 # ax.bar_label(ax.containers[0])
 # plt.show()
 
+
+##Stacked Bar Chart of churned SeniorCitizen customers
 # total_counts = df.groupby('SeniorCitizen')['Churn'].value_counts(normalize=True).unstack()*100
 #
 # fig, ax = plt.subplots(figsize=(6,6))
@@ -72,13 +79,19 @@ print(df.head())
 # plt.xticks(rotation=0)
 # plt.legend(title='Churn', loc='upper right', bbox_to_anchor=(1.05, 1))
 
+
+##Histogram of churned customers by tenure
 # sns.histplot(x='tenure', data=df, bins=72, hue='Churn')
 
+
+##Countplot of churned customers by Contract
 # plt.figure(figsize=(4,4))
 # plt.title("Churn by Contracts")
 # ax=sns.countplot(x='Contract', data=df, hue='Churn')
 # ax.bar_label(ax.containers[0])
 
+
+##Multiple countplot of churned customers by Service
 # columns = ['PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity',
 #            'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies']
 #
@@ -105,11 +118,16 @@ print(df.head())
 #
 # plt.tight_layout()
 
+
+##Countplot of churned customers by Payment Method
 plt.figure(figsize=(9,4))
 plt.title("Churned Customers by Payment Method")
 ax=sns.countplot(x='PaymentMethod', data=df, hue='Churn')
 ax.bar_label(ax.containers[0])
 ax.bar_label(ax.containers[1])
 plt.xticks(rotation=0)
+
+
+
 plt.show()
 
